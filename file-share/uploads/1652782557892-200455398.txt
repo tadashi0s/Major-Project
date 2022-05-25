@@ -1,0 +1,160 @@
+ <div id="tab-chat" class="chat">
+            <nav id="tab-nav">
+                <img id="mini" class="minimize" src="image/icon/minimize.png" alt="">
+                <img id="max" class="zoom" src="image/icon/maximize.png" alt="">
+                <img id="cut" class="close" src="image/icon/close.png" alt="">
+            </nav>
+            <iframe id="tab-content" src="https://web.whatsapp.com/" frameborder="0" title="Inline Frame Example"
+                width="80%" height="80%"></iframe>
+        </div>
+        {{!-- --}}
+        <div id="tab-browser" class="browser">
+            <nav id="tab-nav">
+                <img id="mini" class="minimize" src="image/icon/minimize.png" alt="">
+                <img id="max" class="zoom" src="image/icon/maximize.png" alt="">
+                <img id="cut" class="close" src="image/icon/close.png" alt="">
+            </nav>
+            <iframe id="tab-content" src="" frameborder="0" title="Inline Frame Example" width="80%"
+                height="80%"></iframe>
+        </div>
+
+----------------------------------------------------------------------------------------
+/* #tab{
+	display: flex;
+	flex-direction: column;
+    background-color:rgb(237,237,237);
+	width: 70vw;
+	height: 70vh;
+	border-radius: 8px;
+} */
+#tab-nav {
+	background-color: rgb(216, 216, 216);
+	height: 5%;
+	width: 100%;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+
+}
+
+.chat,
+.browser {
+	display: none;
+	flex-direction: column;
+	background-color: rgb(237, 237, 237);
+	width: 70vw;
+	height: 70vh;
+	border-radius: 8px;
+}
+
+.close,
+.minimize,
+.zoom {
+	height: 15px;
+	width: 15px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+#tab-content {
+	height: 100%;
+	width: 100%;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+-----------------------------------------------------------------------------
+    {{!-- <script>
+        // On-Screen
+        
+        //Full Screen
+        function toggleFullScreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                if (document.documentElement.requestFullScreen) {
+                    document.documentElement.requestFullScreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullScreen) {
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                }
+            } else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+            }
+        }
+        //Backgroung- change
+        var tab = document.getElementById('tab-form');
+        if (tab.addEventListener) {
+            tab.addEventListener(
+                'contextmenu',
+                function (e) {
+                    $('#body-rmenu').toggleClass('hide');
+                    $('#body-rmenu').css({
+                        position: 'absolute',
+                        top: e.pageY,
+                        left: e.pageX
+                    });
+                    //alert('Worked');
+                    e.preventDefault();
+                },
+                false
+            );
+        }
+
+        // this is from another SO post...
+        {{!-- $(document).on('click', function (event) {
+            document.getElementById('body-rmenu').className = 'hide';
+        }); --}}
+
+        function changeBg(number) {
+            // Check browser support of LocalStorage
+            if (typeof Storage !== 'undefined') {
+                // Store
+                localStorage.setItem('wp', number);
+                $('#body').css(
+                    'background-image',
+                    'url(../image/' + number + '.jpg)'
+                );
+            } else {
+                $('#body').css(
+                    'background-image',
+                    'url(../image/' + number + '.jpg)'
+                );
+            }
+        };
+        // Clock
+
+        setTimeout(function () {
+            setInterval(function () {
+                var hours = new Date().getHours();
+                var merid;
+                if (hours > 12) {
+                    hours = hours - 12;
+                    merid = 'PM';
+                } else {
+                    merid = 'AM';
+                }
+
+                var minutes = new Date().getMinutes();
+                // Add a leading zero to the minutes value
+                minutes = (minutes < 10 ? '0' : '') + minutes;
+
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                var today = mm + '/' + dd + '/' + yyyy;
+
+                $('.clock').html(hours + ':' + minutes + ' ' + merid + '<br>' + today);
+            }, 1000);
+        }, 1000);
+
+    </script> --}}
